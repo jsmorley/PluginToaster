@@ -269,7 +269,7 @@ NotificationData ProgressData(void* rm, std::wstring* signature = nullptr)
     return data;
 }
 
-std::wstring DefaultSenderIcon()
+std::wstring RainmeterSenderIcon()
 {
     PWSTR appData = nullptr;
     check_hresult(SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, nullptr, &appData));
@@ -313,26 +313,9 @@ std::wstring DefaultSenderIcon()
     return path.wstring();
 }
 
-std::wstring ResolveSenderIcon(void* rm, const std::wstring& configured)
+void RegisterSender()
 {
-    if (configured.empty()) return DefaultSenderIcon();
-
-    const auto path = std::filesystem::path(RmPathToAbsolute(rm, configured.c_str())).make_preferred();
-    const auto extension = path.extension().wstring();
-    std::error_code error;
-    if ((Equals(extension, L".ico") || Equals(extension, L".png")) &&
-        std::filesystem::is_regular_file(path, error))
-    {
-        return path.wstring();
-    }
-
-    RmLog(rm, LOG_WARNING, L"Toaster: SenderIcon must point to an existing PNG or ICO. Using the Rainmeter icon.");
-    return DefaultSenderIcon();
-}
-
-void RegisterSender(void* rm, const std::wstring& configuredIcon)
-{
-    const auto icon = ResolveSenderIcon(rm, configuredIcon);
+    const auto icon = RainmeterSenderIcon();
     const auto registryPath = std::wstring(L"Software\\Classes\\AppUserModelId\\") + AppId;
     constexpr wchar_t displayName[] = L"Rainmeter Notifications";
     constexpr wchar_t activatorId[] = L"{1229C6CD-D356-4822-B59A-03BA37DA3F35}";
@@ -364,10 +347,8 @@ void Show(Measure& measure, const std::wstring& tag, const std::wstring& group)
     if (silent || suppressPopup || !Read(rm, L"ToastXML").empty()) soundFile.clear();
     if (!soundFile.empty()) soundFile = RmPathToAbsolute(rm, soundFile.c_str());
     const auto xml = BuildXml(rm, progress, silent || !soundFile.empty());
-    const auto senderIcon = Read(rm, L"SenderIcon");
     std::wstring signature;
     Attribute(signature, L"sound", soundFile);
-    Attribute(signature, L"senderIcon", senderIcon);
     Attribute(signature, L"tag", tag);
     Attribute(signature, L"group", group);
     Attribute(signature, L"popup", suppressPopup ? L"0" : L"1");
@@ -414,7 +395,7 @@ void Show(Measure& measure, const std::wstring& tag, const std::wstring& group)
 
     try
     {
-        RegisterSender(rm, senderIcon);
+        RegisterSender();
     }
     catch (const hresult_error& error)
     {

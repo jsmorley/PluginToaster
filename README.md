@@ -11,7 +11,7 @@ Toaster.dll posts native Windows notifications. Clone this repository into
 `C++\PluginToaster` in the [Rainmeter Plugin SDK](https://github.com/rainmeter/rainmeter-plugin-sdk).
 Build `PluginToaster.vcxproj` for Win32 or x64 and install the matching DLL
 in Rainmeter's Plugins folder. The first `Show` registers
-**Rainmeter Notifications** in the current user's registry. Its default sender icon comes from the [Rainmeter project](https://github.com/rainmeter/rainmeter/blob/master/Application/Rainmeter.ico).
+**Rainmeter Notifications** in the current user's registry. The sender always uses the icon from the [Rainmeter project](https://github.com/rainmeter/rainmeter/blob/master/Application/Rainmeter.ico).
 
 ```ini
 [MeasureToast]
@@ -39,7 +39,6 @@ variables and measure references. Nothing is posted on an ordinary update.
 | --- | --- |
 | `Title`, `Text`, `Text2`, `Attribution` | Main text and optional attribution. Windows determines how much fits. |
 | `Icon`, `IconCircle=1`, `HeroImage`, `Image` | Content icon, optional circular crop, large hero image, and inline image. Use local paths, including `#@#` paths. Set `IconAlt`, `HeroImageAlt`, or `ImageAlt` for alternative text. |
-| `SenderIcon` | Local PNG or ICO for the sender icon beside **Rainmeter Notifications**. Defaults to the Rainmeter icon. All Toaster measures share the sender, so the most recent send determines its registered icon. |
 | `LaunchURI` | Opens a URI when the toast body is selected. |
 | `Button1` through `Button5` | Button labels. For each button, set `Button1URI` to open a URI or `Button1Action=Snooze` or `Dismiss` for a Windows action. A button defaults to Dismiss. Use `Button1Icon` for an image or `Button1ContextMenu=1` to place it in the toast menu. Use the corresponding number for each button. |
 | `Silent=1`, `Audio`, `AudioLoop=1` | Silence the toast, select a Windows sound event such as `ms-winsoundevent:Notification.Mail`, or request looping for a supported scenario. |
@@ -78,9 +77,9 @@ and delete the `Rainmeter.PluginToaster` key. It stores `DisplayName`,
 `CustomActivator`, and `IconUri` for the shared sender. The next notification
 from Toaster recreates the key.
 
-To remove the cached default icon as well, delete
+To remove the cached Rainmeter icon as well, delete
 `%LOCALAPPDATA%\Rainmeter\Toaster\Rainmeter.png`. Toaster recreates it the next
-time a notification uses the default Rainmeter sender icon.
+time Toaster sends a notification.
 
 ## Windows 10 testing
 

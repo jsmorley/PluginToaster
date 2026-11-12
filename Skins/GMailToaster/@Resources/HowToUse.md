@@ -22,11 +22,8 @@ delivery was tested on Windows 11.
 
 ## 2. Register and allow Windows notifications
 
-The first send from ToasterTest registers **Rainmeter Notifications** for the current Windows user. GMailToaster also has a **Send test notification** menu item. Run Rainmeter in your normal Windows
+The first send from ToasterTest registers **Rainmeter Notifications** for the current Windows user with the Rainmeter icon. GMailToaster also has a **Send test notification** menu item. Run Rainmeter in your normal Windows
 desktop session. You can repeat the test after five seconds.
-
-If you upgraded from an earlier build that created a **Rainmeter Notifications**
-Start menu shortcut, you can delete that shortcut after updating the DLL.
 
 If the toast banner does not appear, open **Settings → System → Notifications**.
 Enable notifications, find **Rainmeter Notifications** in the sender list,
@@ -43,9 +40,9 @@ and delete the `Rainmeter.PluginToaster` key. It stores `DisplayName`,
 `CustomActivator`, and `IconUri` for the shared sender. The next notification
 from Toaster recreates the key.
 
-To remove the cached default icon as well, delete
+To remove the cached Rainmeter icon as well, delete
 `%LOCALAPPDATA%\Rainmeter\Toaster\Rainmeter.png`. Toaster recreates it the next
-time a notification uses the default Rainmeter sender icon.
+time Toaster sends a notification.
 
 ## 3. Configure Gmail
 
@@ -129,9 +126,6 @@ when it receives the command.
 - `Title`, `Text`, `Text2`, and `Attribution` set the visible text.
 - `Icon`, `Image`, and `HeroImage` add local images. `IconCircle=1` crops the
   content icon to a circle.
-- `SenderIcon=#@#Images\MySender.png` changes the small icon beside
-  **Rainmeter Notifications**. Omit it to use the Rainmeter icon. All
-  Toaster measures share the sender, and each send registers its selection.
 - `LaunchURI` runs when the toast body is clicked. `Button1` through `Button5`
   set labels. Add `Button1URI` to open a link or `Button1Action=Snooze` or
   `Dismiss` for a Windows action. Use the matching number for each button.
