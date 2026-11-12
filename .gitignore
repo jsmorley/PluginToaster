@@ -1,0 +1,6 @@
+.vs/
+x32/
+x64/
+*.vcxproj.user
+*.rmskin
+Newest*.txt
