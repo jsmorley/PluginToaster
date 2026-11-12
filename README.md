@@ -86,7 +86,7 @@ time Toaster sends a notification.
 The current build has been verified on Windows 11. Windows 10 22H2 is
 expected to work, and feedback from Windows 10 testers is welcome.
 
-1. Install `ToasterPlugin.rmskin`. The installer loads **ToasterTest**.
+1. Install `ToasterPlugin-1.1.rmskin`. The installer loads **ToasterTest**.
 2. Click the input field, type a message, and press **Enter**. This test
    requires no Gmail account or credentials.
 3. Check for a toast banner and listen for the original email sound.

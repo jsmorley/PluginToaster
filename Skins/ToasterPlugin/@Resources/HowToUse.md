@@ -7,7 +7,7 @@ account's inbox.
 
 ## 1. Install and send a test
 
-1. Open `ToasterPlugin.rmskin` with Rainmeter Skin Installer. The package
+1. Open `ToasterPlugin-1.1.rmskin` with Rainmeter Skin Installer. The package
    includes both skin variants in the `ToasterPlugin` folder and both
    architectures of `Toaster.dll`. Rainmeter 4.5 or later is required.
 2. The installer loads `ToasterPlugin\ToasterTest.ini` by default. If you turned
