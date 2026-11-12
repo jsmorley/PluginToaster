@@ -1,4 +1,4 @@
-# Toaster 1.0.0 for Rainmeter
+# Toaster 1.1 for Rainmeter
 
 [Download the Rainmeter skin package](https://github.com/jsmorley/PluginToaster/releases/latest).
 The installer opens **ToasterTest**. Click its input field, type a message, and
@@ -79,7 +79,7 @@ and delete the `Rainmeter.PluginToaster` key. It stores `DisplayName`,
 from Toaster recreates the key.
 
 To remove the cached default icon as well, delete
-`%LOCALAPPDATA%\Rainmeter\Toaster\Rainmeter.ico`. Toaster recreates it the next
+`%LOCALAPPDATA%\Rainmeter\Toaster\Rainmeter.png`. Toaster recreates it the next
 time a notification uses the default Rainmeter sender icon.
 
 ## Windows 10 testing
@@ -87,7 +87,7 @@ time a notification uses the default Rainmeter sender icon.
 The current build has been verified on Windows 11. Windows 10 22H2 is
 expected to work, and feedback from Windows 10 testers is welcome.
 
-1. Install `GMailToaster-1.0.0.rmskin`. The installer loads **ToasterTest**.
+1. Install `GMailToaster-1.1.rmskin`. The installer loads **ToasterTest**.
 2. Click the input field, type a message, and press **Enter**. This test
    requires no Gmail account or credentials.
 3. Check for a toast banner and listen for the original email sound.

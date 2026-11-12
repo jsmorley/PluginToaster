@@ -1,4 +1,4 @@
-# How to use ToasterTest and GMailToaster 1.0.0
+# How to use ToasterTest and GMailToaster 1.1
 
 GMailToaster checks the Gmail Atom inbox feed and shows the unread count in
 Rainmeter. When the feed reports a newer message, the skin uses Toaster.dll
@@ -7,7 +7,7 @@ account's inbox.
 
 ## 1. Install and send a test
 
-1. Open `GMailToaster-1.0.0.rmskin` with Rainmeter Skin Installer. The package
+1. Open `GMailToaster-1.1.rmskin` with Rainmeter Skin Installer. The package
    includes `ToasterTest`, the optional `GMailToaster` skin, and both
    architectures of `Toaster.dll`. Rainmeter 4.5 or later is required.
 2. The installer loads `ToasterTest\ToasterTest.ini` by default. If you turned
@@ -44,7 +44,7 @@ and delete the `Rainmeter.PluginToaster` key. It stores `DisplayName`,
 from Toaster recreates the key.
 
 To remove the cached default icon as well, delete
-`%LOCALAPPDATA%\Rainmeter\Toaster\Rainmeter.ico`. Toaster recreates it the next
+`%LOCALAPPDATA%\Rainmeter\Toaster\Rainmeter.png`. Toaster recreates it the next
 time a notification uses the default Rainmeter sender icon.
 
 ## 3. Configure Gmail

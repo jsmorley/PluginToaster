@@ -275,7 +275,7 @@ std::wstring DefaultSenderIcon()
     check_hresult(SHGetKnownFolderPath(FOLDERID_LocalAppData, 0, nullptr, &appData));
     const auto freeAppData = std::unique_ptr<wchar_t, decltype(&CoTaskMemFree)>(appData, CoTaskMemFree);
     const auto directory = std::filesystem::path(appData) / L"Rainmeter" / L"Toaster";
-    const auto path = directory / L"Rainmeter.ico";
+    const auto path = directory / L"Rainmeter.png";
     if (std::filesystem::is_regular_file(path)) return path.wstring();
 
     HMODULE module = nullptr;
@@ -317,13 +317,13 @@ std::wstring ResolveSenderIcon(void* rm, const std::wstring& configured)
 {
     if (configured.empty()) return DefaultSenderIcon();
 
-    const std::wstring path = RmPathToAbsolute(rm, configured.c_str());
-    const auto extension = std::filesystem::path(path).extension().wstring();
+    const auto path = std::filesystem::path(RmPathToAbsolute(rm, configured.c_str())).make_preferred();
+    const auto extension = path.extension().wstring();
     std::error_code error;
     if ((Equals(extension, L".ico") || Equals(extension, L".png")) &&
         std::filesystem::is_regular_file(path, error))
     {
-        return path;
+        return path.wstring();
     }
 
     RmLog(rm, LOG_WARNING, L"Toaster: SenderIcon must point to an existing PNG or ICO. Using the Rainmeter icon.");
@@ -344,7 +344,7 @@ void RegisterSender(void* rm, const std::wstring& configuredIcon)
         reinterpret_cast<const BYTE*>(displayName), sizeof(displayName)));
     check_win32(RegSetValueExW(key.get(), L"CustomActivator", 0, REG_SZ,
         reinterpret_cast<const BYTE*>(activatorId), sizeof(activatorId)));
-    check_win32(RegSetValueExW(key.get(), L"IconUri", 0, REG_SZ,
+    check_win32(RegSetValueExW(key.get(), L"IconUri", 0, REG_EXPAND_SZ,
         reinterpret_cast<const BYTE*>(icon.c_str()),
         static_cast<DWORD>((icon.size() + 1) * sizeof(wchar_t))));
 }
