@@ -2,8 +2,7 @@
 
 [Download the Rainmeter skin package](https://github.com/jsmorley/PluginToaster/releases/latest).
 The installer opens **ToasterTest**. Click its input field, type a message, and
-press Enter to see a toast and hear the test sound. Switch to the **GMailNotify** variant in the same `ToasterPlugin` folder for
-unread mail alerts. See the [usage guide](Skins/ToasterPlugin/@Resources/HowToUse.md).
+press Enter to see a toast and hear the test sound. See the [plugin options guide](Skins/ToasterPlugin/@Resources/HowToUse.md).
 
 ![Illustrated preview of a ToasterTest notification](docs/ToasterTest.webp)
 
@@ -87,10 +86,9 @@ The current build has been verified on Windows 11. Windows 10 22H2 is
 expected to work, and feedback from Windows 10 testers is welcome.
 
 1. Install `ToasterPlugin-1.1.rmskin`. The installer loads **ToasterTest**.
-2. Click the input field, type a message, and press **Enter**. This test
-   requires no Gmail account or credentials.
+2. Click the input field, type a message, and press **Enter**.
 3. Check for a toast banner and listen for the original email sound.
-   Press **Win+A** to check Action Center even if no banner appears.
+   Check Notification Center (**Win+N** on Windows 11) or Action Center (**Win+A** on Windows 10) even if no banner appears.
 
 If the test fails, report the Windows version and OS build from `winver`,
 whether the banner appeared, whether the toast reached Action Center,

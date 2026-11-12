@@ -1,8 +1,0 @@
-[Variables]
-GMailID1=YOUR_GMAIL_ADDRESS
-GMailPassword1=YOUR_GMAIL_APP_PASSWORD
-GMailLabel1=Primary Gmail
-GMailID2=YOUR_GMAIL_ADDRESS
-GMailPassword2=YOUR_GMAIL_APP_PASSWORD
-GMailLabel2=Secondary Gmail
-RecentMinutes=15
