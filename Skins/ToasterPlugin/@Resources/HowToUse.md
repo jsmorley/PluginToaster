@@ -1,28 +1,29 @@
-# How to use ToasterTest and GMailToaster 1.1
+# How to use ToasterTest and GMailNotify 1.1
 
-GMailToaster checks the Gmail Atom inbox feed and shows the unread count in
+GMailNotify checks the Gmail Atom inbox feed and shows the unread count in
 Rainmeter. When the feed reports a newer message, the skin uses Toaster.dll
 to send a native Windows notification. The Gmail icon opens the selected
 account's inbox.
 
 ## 1. Install and send a test
 
-1. Open `GMailToaster-1.1.rmskin` with Rainmeter Skin Installer. The package
-   includes `ToasterTest`, the optional `GMailToaster` skin, and both
+1. Open `ToasterPlugin.rmskin` with Rainmeter Skin Installer. The package
+   includes both skin variants in the `ToasterPlugin` folder and both
    architectures of `Toaster.dll`. Rainmeter 4.5 or later is required.
-2. The installer loads `ToasterTest\ToasterTest.ini` by default. If you turned
+2. The installer loads `ToasterPlugin\ToasterTest.ini` by default. If you turned
    off loading in the installer, open that skin in Rainmeter Manage.
 3. Click **Click to type a message**, type your text, and press **Enter**.
    Windows receives a toast with the message and toast icon, and Rainmeter
    plays the original Gmail WAV. Press **Esc** to cancel editing.
 
-ToasterTest works without a Gmail account. Load `GMailToaster\GMailToaster.ini`
-from Rainmeter Manage if you also want unread mail alerts. Native toast
+ToasterTest works without a Gmail account. For unread mail alerts, load
+`ToasterPlugin\GMailNotify.ini` from Rainmeter Manage. Rainmeter loads one
+variant at a time. Both variants use the same `@Resources` folder. Native toast
 delivery was tested on Windows 11.
 
 ## 2. Register and allow Windows notifications
 
-The first send from ToasterTest registers **Rainmeter Notifications** for the current Windows user with the Rainmeter icon. GMailToaster also has a **Send test notification** menu item. Run Rainmeter in your normal Windows
+The first send from ToasterTest registers **Rainmeter Notifications** for the current Windows user with the Rainmeter icon. GMailNotify also has a **Send test notification** menu item. Run Rainmeter in your normal Windows
 desktop session. You can repeat the test after five seconds.
 
 If the toast banner does not appear, open **Settings → System → Notifications**.
@@ -30,7 +31,7 @@ Enable notifications, find **Rainmeter Notifications** in the sender list,
 and check its banner and Notification Center settings. Press **Win+N** to
 look for the test toast in Notification Center. Do Not Disturb can send it
 there without showing a banner. For a plugin error, open Rainmeter's **About**
-window and check the **Log** tab for `MeasureToast` in ToasterTest or `MeasureTestToast` in GMailToaster.
+window and check the **Log** tab for `MeasureToast` in ToasterTest or `MeasureTestToast` in GMailNotify.
 
 ### Remove the Windows sender registration
 
@@ -82,13 +83,13 @@ latest message tracked separately for each account across refreshes.
 Use the right-click menu to switch accounts or check immediately. The skin
 opens browser slots `/u/0/` and `/u/1/` for accounts 1 and 2. If your Gmail
 sign-in order differs, change `InboxURL1` and `InboxURL2` in
-`GMailToaster.ini`. Set `ShowMessageDetails=0` there to omit the sender and
+`GMailNotify.ini`. Set `ShowMessageDetails=0` there to omit the sender and
 subject from the Windows toast. The skin's own hover tooltip still shows
 mail details. Refresh after changing the INI.
 
 ## Choose a Gmail icon
 
-Open `GMailToaster.ini` and set `GMailIcon` in the `[Variables]` section to one of these values.
+Open `GMailNotify.ini` and set `GMailIcon` in the `[Variables]` section to one of these values.
 
 | Setting | Icon |
 | --- | --- |
